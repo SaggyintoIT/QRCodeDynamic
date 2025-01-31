@@ -274,43 +274,45 @@
 
     // Load Logos
     let logos = [
-    "images/Googlepay.jpeg",
-      "images/paytm.jpeg",
-      "images/phonepay.jpeg",
-     "images/amazonpay.jpeg",
-     "images/whatsapp.jpeg",
-    ];
+    "images/googlepay1.svg",
+    "images/paytm.jpeg",
+    "images/phonepay.jpeg",
+    "images/amazonpay.jpeg",
+    "images/whatsapp.jpeg",
+];
 
-    let loadedImages = 0;
-    let logoSize = 40;
-    let startX = 50;
-    let startY = 310;
+let loadedImages = 0;
+let logoWidth = 35; // Width of the logo
+let logoHeight = 28; // Height of the logo
+let startX = 50;
+let startY = 310;
 
-    function drawLogos() {
-      logos.forEach((logo, index) => {
+function drawLogos() {
+    logos.forEach((logo, index) => {
         let img = new Image();
         img.onload = function () {
-          ctx.drawImage(img, startX + (index * 70), startY, logoSize, logoSize);
-          loadedImages++;
-          if (loadedImages === logos.length) finalizeDownload();
+            ctx.drawImage(img, startX + (index * 70), startY, logoWidth, logoHeight);
+            loadedImages++;
+            if (loadedImages === logos.length) finalizeDownload();
         };
         img.src = logo;
-      });
-    }
+    });
+}
+
 
     function finalizeDownload() {
       // Add footer text
-      ctx.font = "14px Arial";
+      ctx.font = "12px Arial";
       ctx.fillText("Create your own UPI QR code at www.zerogateway.com/upi", 20, 400);
 
       // Add "POWERED BY" text
-  ctx.font = "16px Arial"; 
-  ctx.fillText("POWERED BY ", 40, 450);
+  ctx.font = "10px Arial"; 
+  ctx.fillText("POWERED BY ", 98, 450);
       // Add IndTechMark logo
       let footerLogo = new Image();
-      footerLogo.src = "images/indtechmarklogo.jpeg";  // Ensure this file exists
+      footerLogo.src = "images/indLogo.svg";  // Ensure this file exists
       footerLogo.onload = function () {
-        ctx.drawImage(footerLogo, 150, 420, 100, 50);
+        ctx.drawImage(footerLogo, 175, 435, 90, 16);
 
         // Download final image
         let downloadLink = document.createElement("a");
